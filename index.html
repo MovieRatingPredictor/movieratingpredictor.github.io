@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Movie Rating Predictor: The Report</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+
+    <!-- Custom Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="css/animate.min.css" type="text/css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/creative.css" type="text/css">
+
+</head>
+
+<body id="page-top">
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">Movie Rating Predictor</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="#motivation">Motivation</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#data">Dataset</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#methods">Methods</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#result">Key Results</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#future">Future Steps</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <h1>Movie Rating Predictor</h1>
+                <hr>
+                <h3> 
+                    A study to find the secret of making high quality movies.
+                </h3>
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-primary" id="motivation">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">White Space in The Global Game</h2>
+                    <hr class="primary">
+                    <p>"Some people believe football is a matter of life and death...I can assure you it is much, much more important than that" - Bill Shankly<br><br>
+                    Across all corners of the globe, starry-eyed individuals gather together to chase after a ball hoping to replicate the moves they'd seen on TV or to bring to life whatever they'd imagined. We are all equal on the football pitch.Your technique does not depend on the color of your skin nor does your imagination depend on your socio-economic status; all else is irrelevant. It is for these reasons that football has become the Global Game and expanded to a multi-billion dollar industry. Despite this, there are very few solutions for predicting matches - even fewer which rely on data analysis. This intrigued us so we sought to find a way to merge data-analysis and match prediction.
+                    </p>
+                    <!-- <a href="#" class="btn btn-default btn-xl">Get Started!</a> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-primary" id="data">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">White Space in The Global Game</h2>
+                    <hr class="primary">
+                    <p>"Some people believe football is a matter of life and death...I can assure you it is much, much more important than that" - Bill Shankly<br><br>
+                    Across all corners of the globe, starry-eyed individuals gather together to chase after a ball hoping to replicate the moves they'd seen on TV or to bring to life whatever they'd imagined. We are all equal on the football pitch.Your technique does not depend on the color of your skin nor does your imagination depend on your socio-economic status; all else is irrelevant. It is for these reasons that football has become the Global Game and expanded to a multi-billion dollar industry. Despite this, there are very few solutions for predicting matches - even fewer which rely on data analysis. This intrigued us so we sought to find a way to merge data-analysis and match prediction.
+                    </p>
+                    <!-- <a href="#" class="btn btn-default btn-xl">Get Started!</a> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="methods">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Training & Testing Methods</h2>
+                    <hr class="primary">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>
+                        The first step was gathering our data. Many insightful statistics are not published or recorded, so our data-collection was limited to only the following statistics for each match:<br>
+                        <b><br>
+                        {Score, Shots, Shots on Goal, Fouls, Corner kicks, Offsides, Time of Possession, Yellow Cards, Red Cards, Saves}
+                        </b>
+                        <br><br>
+                        Our task was now a matter of manipulating this data to optimize how much it can help us predict scores of matches. To help us, we created a 'Team' class which was instantiated for every team in the league and held long-term statistics (such as the following attributes) as well as a function to update the attributes after a match:<br><br>
+                        <b>
+                        {TotalGamesPlayed, TotalNumPoints, LeagueStanding, AveragePosession, TotalGoalsScored, TotalGoalsConceded, GoalDifference, TotalShots, TotalShotsOnTarget, TotalShotsConceded, TotalShotsOnTargetConceded, TotalSaves, TotalSavesAgainst, TotalFoulsCommitted, TotalFoulsConceded, TotalCornersWon, TotalCornersConceded, TotalOffsidesFor, TotalOffsidesAgainst, TotalYellowCardsForOpponents, TotalRedCardsForOpponents, TotalYellowCards, TotalRedCards, HomeRecord, AwayRecord, Prev5Match, Prev5MatchEnumerated}
+                        </b><br><br>
+
+                        Manipulating our data involved storing ratios in our dataset as opposed to just the raw-data i.e. <i>Yellow Cards/AveragePossession</i> instead of solely <i>Yellow Cards</i>. This proved to be a good move as our machine was more accurate with these metrics than without. <br><br>
+
+                        As only the team's total statistics prior to the match day could have been relevant to match outcome, we stored the team's prior-to-the-match-attributes and the outcome of the match (Home Win, Draw, Away Win) in a dataset, before updating the Team object.<br><br>
+
+                        We did the aforementioned data-collection for 8 Premier League seasons (~3,040 matches).<br><br>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <aside>
+        <div class="text-center">
+            <div class="call-to-action">
+                <form method = "get" action = "dataset.zip">
+                    <button type="submit" class="btn btn-default btn-xl wow tada">Download the Dataset</button>
+                </form>
+            </div>
+        </div>
+    </aside>
+    </section>
+    <section id="result">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Key Results</h2>
+                    <hr class="primary">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+                <div class="col-lg-12">
+                    <p>
+                        Analysis on our data with 10-Fold Cross Validation revealed an average accuracy of 50% with the major ML algorithms such as Decision Trees, Random Forest, Bayes Nets, Multilayer Perceptrons, RBF Networks, and many more. Though the accuracy of these algorithms fluctuated within 5% either side of 50% (45-55%), some algorithms worked better than others. Unfortunately this improvement was not as great as we would have hoped. Using the Simple Logistic function built in to Weka, we were able to achieve 52.607% accuracy - though only slightly better than a 50% guess, it is a 19.277% improvement on the 1/3rd accuracy of random selection. This means that the ML algorithms learned from the features we passed, and that there is promise in the field of statistical analysis for match prediction. Moving forward we need to incorporate other statistics if we truly wish to model teams' playing styles and match-ups.<br><br>
+                        That said however, this exploration has revealed some vital elements including evidence to support the strength of the 'home field advantage', and that recent form can be just as important as quality in determining the outcomes of a match. Furthermore, it showed that teams that that like to keep possession have a lot better chances of winning away games than those that do not.
+                        <br><br>
+                    </p>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-lg-offset-3">
+                        <img src = "img/Outcomes.png" style="width: 100%;height: 100%">
+                        <center>The break down of the results<br>{Away Win, Draw, Home Win}</center>
+                    </div>
+                </div>
+                <br><br>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <img src = "img/home_team_home_record.png" style="width: 100%;height: 130%">
+                        <center> Results based on home team home record</center>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src = "img/away_team_avgpossession.png" style="width: 100%;height: 130%">
+                        <center> Results based on away team posession retention</center>
+                    </div>
+                </div>
+    </section>
+
+    <section id="future">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Future Steps</h2>
+                    <hr class="primary">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+                <div class="col-lg-12">
+                    <p>
+                        Analysis on our data with 10-Fold Cross Validation revealed an average accuracy of 50% with the major ML algorithms such as Decision Trees, Random Forest, Bayes Nets, Multilayer Perceptrons, RBF Networks, and many more. Though the accuracy of these algorithms fluctuated within 5% either side of 50% (45-55%), some algorithms worked better than others. Unfortunately this improvement was not as great as we would have hoped. Using the Simple Logistic function built in to Weka, we were able to achieve 52.607% accuracy - though only slightly better than a 50% guess, it is a 19.277% improvement on the 1/3rd accuracy of random selection. This means that the ML algorithms learned from the features we passed, and that there is promise in the field of statistical analysis for match prediction. Moving forward we need to incorporate other statistics if we truly wish to model teams' playing styles and match-ups.<br><br>
+                        That said however, this exploration has revealed some vital elements including evidence to support the strength of the 'home field advantage', and that recent form can be just as important as quality in determining the outcomes of a match. Furthermore, it showed that teams that that like to keep possession have a lot better chances of winning away games than those that do not.
+                        <br><br>
+                    </p>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-lg-offset-3">
+                        <img src = "img/Outcomes.png" style="width: 100%;height: 100%">
+                        <center>The break down of the results<br>{Away Win, Draw, Home Win}</center>
+                    </div>
+                </div>
+                <br><br>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <img src = "img/home_team_home_record.png" style="width: 100%;height: 130%">
+                        <center> Results based on home team home record</center>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src = "img/away_team_avgpossession.png" style="width: 100%;height: 130%">
+                        <center> Results based on away team posession retention</center>
+                    </div>
+                </div>
+    </section>
+
+
+
+    <aside>
+        <div class="container text-center">
+            <div class="call-to-action">
+                <form method = "get" action = "Prem_Footy_Predictor.docx">
+                    <button type="submit" class="btn btn-default btn-xl wow tada">Download Final Report</button>
+                </form>
+            </div>
+        </div>
+    </aside>
+
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Contact us</h2>
+                    <hr class="primary">
+                    <p>This project is created for EECS 349 Machine Learning at Northwestern University.</p>
+                </div>
+                <div class="col-lg-4 col-lg-offset-2 text-center">
+                    <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+                    <p>Guixin Lin<br>guixinlin2018@u.northwestern.edu</p>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+                    <p>Junhan Liu<br>junhanliu20xx@u.northwestern.edu</p>
+                </div>                
+                <div class="col-lg-4 col-lg-offset-2 text-center">
+                    <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+                    <p>Ruohong Zhang<br>ruohongzhang2017@u.northwestern.edu</p>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+                    <p>Yi Zhang<br>yizhang@u.northwestern.edu</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/jquery.fittext.js"></script>
+    <script src="js/wow.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/creative.js"></script>
+
+</body>
+
+</html>
