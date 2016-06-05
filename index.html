@@ -85,10 +85,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">White Space in The Global Game</h2>
+                    <h2 class="section-heading">The Magic Formula</h2>
                     <hr class="primary">
-                    <p>"Some people believe football is a matter of life and death...I can assure you it is much, much more important than that" - Bill Shankly<br><br>
-                    Across all corners of the globe, starry-eyed individuals gather together to chase after a ball hoping to replicate the moves they'd seen on TV or to bring to life whatever they'd imagined. We are all equal on the football pitch.Your technique does not depend on the color of your skin nor does your imagination depend on your socio-economic status; all else is irrelevant. It is for these reasons that football has become the Global Game and expanded to a multi-billion dollar industry. Despite this, there are very few solutions for predicting matches - even fewer which rely on data analysis. This intrigued us so we sought to find a way to merge data-analysis and match prediction.
+                    <p>Ever since the first motion picture camera was invented 120 years ago, film, one of the richest form of human expression and a now gigantic industry that generates tens of billions of dollars every year, has witnessed numerous technological and artistic developments and engaged almost everybody with its entertainment. Nowadays, while many people are working towards producing movies of the highest quality, the stakeholders of this industry are increasingly focused on commercial success. As a result, very few studies have been done on how to make high quality films as opposed to how to achieve box office success. Aspired to discover the secret formula of producing the high quality movies, we as a team are going to explore multiple features of film production and advance people’s understanding of this topic with machine learning models. We believe our endeavors will benefit many people especially film producers, directors, companies or students who are seeking the magic formula to craft high quality films.
                     </p>
                     <!-- <a href="#" class="btn btn-default btn-xl">Get Started!</a> -->
                 </div>
@@ -100,15 +99,48 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">White Space in The Global Game</h2>
+                    <h2 class="section-heading">Features and Data</h2>
                     <hr class="primary">
-                    <p>"Some people believe football is a matter of life and death...I can assure you it is much, much more important than that" - Bill Shankly<br><br>
-                    Across all corners of the globe, starry-eyed individuals gather together to chase after a ball hoping to replicate the moves they'd seen on TV or to bring to life whatever they'd imagined. We are all equal on the football pitch.Your technique does not depend on the color of your skin nor does your imagination depend on your socio-economic status; all else is irrelevant. It is for these reasons that football has become the Global Game and expanded to a multi-billion dollar industry. Despite this, there are very few solutions for predicting matches - even fewer which rely on data analysis. This intrigued us so we sought to find a way to merge data-analysis and match prediction.
+                    <p>IMDB database and Wikipedia serve as our main data sources. We queried the IMDB database for all qualified movies by the following filters:
+Year > 1976
+Country = USA
+Number of Rating Votes > 500
+ As a result we got a total of 8942 movies with ratings ranging from 1.1 to 9.5. We further filtered out examples that have many missing data (movies that don’t have box office, budget, and actor data) to improve training performance and are left with 4476 instances. 
+
+IMDb rating is widely used by critics and consumers as an indicator of movie quality relatively independent of commercial success. Therefore we rely directly on IMDB ratings to generate our movie quality label. We used two ways to label/classify instances according to their ratings 1) divide ratings into four quartiles representing four levels, 
+A: rating >= 7.1, first quartile
+B: rating >= 6.4 second quartile
+C: rating >= 5.7 third quartile
+D: rating < 5.7 fourth quartile
+    and 2) dividing ratings into two groups, below and above top 40% line. 
+A: rating >= 6.7, top 40%, high quality
+B: rating < 6.7, lower 60, low quality
+
+    For each movie, we collected the following attributes:
+Year (numerical)
+Main genre (nominal)
+Number of genres (numerical)
+Length (numerical)
+Number of languages (numerical)
+Box office (numerical)
+Budget (numerical)
+Award Index of top three actors/actresses (numerical)
+Award Index of director (numerical)
+Among these attributes, a) to e) can be obtained directly from the IMDB database. For attributes f) to i), we wrote a python script to collect them from Wikipedia. Most of these attributes listed above are straightforward, probably except the last two. The original intention of the last two attributes is to take the number of awards owned by directors/casts into account. However, considering the difficulty of counting the exact number of awards, we decided to approximate it by the frequencies of some award related keywords in the Wikipedia page of directors/casts. Keywords considered for this purpose includes “oscar”, “golden globe”, “prize”, and “awards”. Although such an approximation sacrificed accuracy to some extent, the compromise did bring us the practicability to take this attribute into consideration.
+
                     </p>
-                    <!-- <a href="#" class="btn btn-default btn-xl">Get Started!</a> -->
                 </div>
             </div>
         </div>
+    <aside>
+        <div class="text-center">
+            <div class="call-to-action">
+                <form method = "get" action = "data.zip">
+                    <button type="submit" class="btn btn-default btn-xl wow tada">Download the Dataset</button>
+                </form>
+            </div>
+        </div>
+    </aside>
     </section>
 
     <section id="methods">
@@ -143,15 +175,7 @@
                 </div>
             </div>
         </div>
-        <aside>
-        <div class="text-center">
-            <div class="call-to-action">
-                <form method = "get" action = "dataset.zip">
-                    <button type="submit" class="btn btn-default btn-xl wow tada">Download the Dataset</button>
-                </form>
-            </div>
-        </div>
-    </aside>
+
     </section>
     <section id="result">
         <div class="container">
@@ -200,28 +224,14 @@
         </div>
         <div class="container">
                 <div class="col-lg-12">
-                    <p>
-                        Analysis on our data with 10-Fold Cross Validation revealed an average accuracy of 50% with the major ML algorithms such as Decision Trees, Random Forest, Bayes Nets, Multilayer Perceptrons, RBF Networks, and many more. Though the accuracy of these algorithms fluctuated within 5% either side of 50% (45-55%), some algorithms worked better than others. Unfortunately this improvement was not as great as we would have hoped. Using the Simple Logistic function built in to Weka, we were able to achieve 52.607% accuracy - though only slightly better than a 50% guess, it is a 19.277% improvement on the 1/3rd accuracy of random selection. This means that the ML algorithms learned from the features we passed, and that there is promise in the field of statistical analysis for match prediction. Moving forward we need to incorporate other statistics if we truly wish to model teams' playing styles and match-ups.<br><br>
-                        That said however, this exploration has revealed some vital elements including evidence to support the strength of the 'home field advantage', and that recent form can be just as important as quality in determining the outcomes of a match. Furthermore, it showed that teams that that like to keep possession have a lot better chances of winning away games than those that do not.
-                        <br><br>
-                    </p>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6 col-lg-offset-3">
-                        <img src = "img/Outcomes.png" style="width: 100%;height: 100%">
-                        <center>The break down of the results<br>{Away Win, Draw, Home Win}</center>
-                    </div>
-                </div>
-                <br><br>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <img src = "img/home_team_home_record.png" style="width: 100%;height: 130%">
-                        <center> Results based on home team home record</center>
-                    </div>
-                    <div class="col-lg-6">
-                        <img src = "img/away_team_avgpossession.png" style="width: 100%;height: 130%">
-                        <center> Results based on away team posession retention</center>
-                    </div>
+                        
+                    <ul>
+                      <li>Include more features that have an empirical impact on movie quality including special effect techniques, sound/videography effects, etc. Especially, as movies are usually made by many people with myriads of roles, finding a way to factor all of the human part of movie productions should be very effective.</li><br>
+                      <li>We have seen that award indices of directors and actors have proven to be very effective. We intend to refine our way of calculating the award index of actors and directors. Right now we do a simple count of a few keywords, which may be a good representation of the award concept but does differentiate or give weight to different awards and nomination versus winning status as well as the date of award.</li><br>
+                      <li>Considering that a large portion of movies have missing data on multiple attributes, we may want to expand our data sources so that we can collect more comprehensive data for each movie. By doing so, we can avoid losing around half of the movies simply because they have too many missing data. </li><br>
+                      <li>Experiment with more training methods. Neural network has proven to be the most effective. However, there are still many different settings of this model that should be test with in hope to achieve better testing results.</li>
+                    </ul>  
+
                 </div>
     </section>
 
@@ -230,7 +240,7 @@
     <aside>
         <div class="container text-center">
             <div class="call-to-action">
-                <form method = "get" action = "Prem_Footy_Predictor.docx">
+                <form method = "get" action = "Final_Report.pdf">
                     <button type="submit" class="btn btn-default btn-xl wow tada">Download Final Report</button>
                 </form>
             </div>
