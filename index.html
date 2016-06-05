@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Movie Rating Predictor: The Report</title>
+    <title>Movie Quality Predictor: The Report</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -38,7 +38,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Movie Rating Predictor</a>
+                <a class="navbar-brand page-scroll" href="#page-top">Movie Quality Predictor</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -72,7 +72,7 @@
     <header>
         <div class="header-content">
             <div class="header-content-inner">
-                <h1>Movie Rating Predictor</h1>
+                <h1>Movie Quality Predictor</h1>
                 <hr>
                 <h3> 
                     A study to find the secret of making high quality movies.
@@ -98,35 +98,41 @@
     <section class="bg-primary" id="data">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
+                <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Features and Data</h2>
                     <hr class="primary">
-                    <p>IMDB database and Wikipedia serve as our main data sources. We queried the IMDB database for all qualified movies by the following filters:
-Year > 1976
-Country = USA
-Number of Rating Votes > 500
- As a result we got a total of 8942 movies with ratings ranging from 1.1 to 9.5. We further filtered out examples that have many missing data (movies that don’t have box office, budget, and actor data) to improve training performance and are left with 4476 instances. 
-
-IMDb rating is widely used by critics and consumers as an indicator of movie quality relatively independent of commercial success. Therefore we rely directly on IMDB ratings to generate our movie quality label. We used two ways to label/classify instances according to their ratings 1) divide ratings into four quartiles representing four levels, 
-A: rating >= 7.1, first quartile
-B: rating >= 6.4 second quartile
-C: rating >= 5.7 third quartile
-D: rating < 5.7 fourth quartile
-    and 2) dividing ratings into two groups, below and above top 40% line. 
-A: rating >= 6.7, top 40%, high quality
-B: rating < 6.7, lower 60, low quality
-
-    For each movie, we collected the following attributes:
-Year (numerical)
-Main genre (nominal)
-Number of genres (numerical)
-Length (numerical)
-Number of languages (numerical)
-Box office (numerical)
-Budget (numerical)
-Award Index of top three actors/actresses (numerical)
-Award Index of director (numerical)
-Among these attributes, a) to e) can be obtained directly from the IMDB database. For attributes f) to i), we wrote a python script to collect them from Wikipedia. Most of these attributes listed above are straightforward, probably except the last two. The original intention of the last two attributes is to take the number of awards owned by directors/casts into account. However, considering the difficulty of counting the exact number of awards, we decided to approximate it by the frequencies of some award related keywords in the Wikipedia page of directors/casts. Keywords considered for this purpose includes “oscar”, “golden globe”, “prize”, and “awards”. Although such an approximation sacrificed accuracy to some extent, the compromise did bring us the practicability to take this attribute into consideration.
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>
+                    <h3>Dataset</h3>
+                    We compiled a list of over 8000 films produced since 1976 in the USA, applied a number of filters and generated 4476 movies for our study. All the features are generated from the IMDB database or wikipedia web parsing. (Please see our report for details.)<br>
+                    <h3>Labels</h3>
+                    IMDb rating is widely used by critics and consumers as an indicator of movie quality relatively independent of commercial success. Therefore we rely directly on IMDB ratings to generate our movie quality label.  We used two ways to classify instances given the distribution of imdb ratings and conducted respective experiments.<br><br>
+                    <center>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <p>Four Quality Class Labels:</p>
+                             A: rating >= 7.1, first quartile<br>
+                             B: rating >= 6.4 second quartile<br>
+                             C: rating >= 5.7 third quartile<br>
+                             D: rating < 5.7 fourth quartile<br>
+                            
+                        </div>
+                        <div class="col-lg-6">
+                            <p>Two Quality Class Labels: </p>
+                            A: rating >= 6.7, top 40%, high quality<br>
+                            B: rating < 6.7, lower 60%, low quality<br>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- <img src = "img/rating_distribution.png" style="width: 50%;height: auto"> -->
+                    </center>
+                    <h3>Features</h3>
+                    Nine features for each instance are included: Year, Runtime, Number of Languages, Main Genre, Number of Genres, Award Index of Director, Award Index of Top Three Actors and Actresses, Box Office, Budget. The first three are queried from the IMDB database, the the last four are parsed from Wikipedia pages. Award indices of directors, actors and actresses are generated from counts of keywords such as Oscar, Golden Globe, Awards, etc.
 
                     </p>
                 </div>
