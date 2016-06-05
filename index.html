@@ -41,20 +41,16 @@
                 <a class="navbar-brand page-scroll" href="#page-top">Movie Quality Predictor</a>
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a class="page-scroll" href="#motivation">Motivation</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#data">Dataset</a>
+                        <a class="page-scroll" href="#data">Features & Data</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#methods">Methods</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#result">Key Results</a>
+                        <a class="page-scroll" href="#methods">Training & Testing</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#future">Future Steps</a>
@@ -64,9 +60,7 @@
                     </li>
                 </ul>
             </div>
-            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.container-fluid -->
     </nav>
 
     <header>
@@ -89,7 +83,6 @@
                     <hr class="primary">
                     <p>Ever since the first motion picture camera was invented 120 years ago, film, one of the richest form of human expression and a now gigantic industry that generates tens of billions of dollars every year, has witnessed numerous technological and artistic developments and engaged almost everybody with its entertainment. Nowadays, while many people are working towards producing movies of the highest quality, the stakeholders of this industry are increasingly focused on commercial success. As a result, very few studies have been done on how to make high quality films as opposed to how to achieve box office success. Aspired to discover the secret formula of producing the high quality movies, we as a team are going to explore multiple features of film production and advance people’s understanding of this topic with machine learning models. We believe our endeavors will benefit many people especially film producers, directors, companies or students who are seeking the magic formula to craft high quality films.
                     </p>
-                    <!-- <a href="#" class="btn btn-default btn-xl">Get Started!</a> -->
                 </div>
             </div>
         </div>
@@ -99,7 +92,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Features and Data</h2>
+                    <h2 class="section-heading">Features & Data</h2>
                     <hr class="primary">
                 </div>
             </div>
@@ -108,14 +101,14 @@
             <div class="row">
                 <div class="col-lg-12">
                     <p>
-                    <h3>Dataset</h3>
+                    <h4>Dataset</h4>
                     We compiled a list of over 8000 films produced since 1976 in the USA, applied a number of filters and generated 4476 movies for our study. All the features are generated from the IMDB database or wikipedia web parsing. (Please see our report for details.)<br>
-                    <h3>Labels</h3>
-                    IMDb rating is widely used by critics and consumers as an indicator of movie quality relatively independent of commercial success. Therefore we rely directly on IMDB ratings to generate our movie quality label.  We used two ways to classify instances given the distribution of imdb ratings and conducted respective experiments.<br><br>
+                    <h4>Labels</h4>
+                    IMDb rating is widely used by critics and consumers as an indicator of movie quality relatively independent of commercial success. Therefore we rely directly on IMDB ratings to generate our movie quality label.  We used two ways to classify instances given the distribution of imdb ratings and conducted respective experiments.<br>
                     <center>
                     <div class="row">
                         <div class="col-lg-6">
-                            <p>Four Quality Class Labels:</p>
+                            <p>Quaternary Quality Class Labels:</p>
                              A: rating >= 7.1, first quartile<br>
                              B: rating >= 6.4 second quartile<br>
                              C: rating >= 5.7 third quartile<br>
@@ -123,37 +116,26 @@
                             
                         </div>
                         <div class="col-lg-6">
-                            <p>Two Quality Class Labels: </p>
+                            <p>Binary Quality Class Labels: </p>
                             A: rating >= 6.7, top 40%, high quality<br>
                             B: rating < 6.7, lower 60%, low quality<br>
                         </div>
                     </div>
-                    <br>
                     <!-- <img src = "img/rating_distribution.png" style="width: 50%;height: auto"> -->
                     </center>
-                    <h3>Features</h3>
-                    Nine features for each instance are included: Year, Runtime, Number of Languages, Main Genre, Number of Genres, Award Index of Director, Award Index of Top Three Actors and Actresses, Box Office, Budget. The first three are queried from the IMDB database, the the last four are parsed from Wikipedia pages. Award indices of directors, actors and actresses are generated from counts of keywords such as Oscar, Golden Globe, Awards, etc.
-
+                    <h4>Features</h4>
+                    Nine features are applied: Year, Runtime, Number of Languages, Main Genre, Number of Genres, Award Index of Director, Award Index of Top Three Actors and Actresses, Box Office, Budget. The first three are queried from the IMDB database, the the last four are parsed from Wikipedia pages. Award indices of directors, actors and actresses are generated from counts of keywords such as Oscar, Golden Globe, Awards, etc.
                     </p>
                 </div>
             </div>
         </div>
-    <aside>
-        <div class="text-center">
-            <div class="call-to-action">
-                <form method = "get" action = "data.zip">
-                    <button type="submit" class="btn btn-default btn-xl wow tada">Download the Dataset</button>
-                </form>
-            </div>
-        </div>
-    </aside>
     </section>
 
     <section id="methods">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Training & Testing Methods</h2>
+                    <h2 class="section-heading">Training & Testing</h2>
                     <hr class="primary">
                 </div>
             </div>
@@ -162,61 +144,19 @@
             <div class="row">
                 <div class="col-lg-12">
                     <p>
-                        The first step was gathering our data. Many insightful statistics are not published or recorded, so our data-collection was limited to only the following statistics for each match:<br>
-                        <b><br>
-                        {Score, Shots, Shots on Goal, Fouls, Corner kicks, Offsides, Time of Possession, Yellow Cards, Red Cards, Saves}
-                        </b>
-                        <br><br>
-                        Our task was now a matter of manipulating this data to optimize how much it can help us predict scores of matches. To help us, we created a 'Team' class which was instantiated for every team in the league and held long-term statistics (such as the following attributes) as well as a function to update the attributes after a match:<br><br>
-                        <b>
-                        {TotalGamesPlayed, TotalNumPoints, LeagueStanding, AveragePosession, TotalGoalsScored, TotalGoalsConceded, GoalDifference, TotalShots, TotalShotsOnTarget, TotalShotsConceded, TotalShotsOnTargetConceded, TotalSaves, TotalSavesAgainst, TotalFoulsCommitted, TotalFoulsConceded, TotalCornersWon, TotalCornersConceded, TotalOffsidesFor, TotalOffsidesAgainst, TotalYellowCardsForOpponents, TotalRedCardsForOpponents, TotalYellowCards, TotalRedCards, HomeRecord, AwayRecord, Prev5Match, Prev5MatchEnumerated}
-                        </b><br><br>
+                    We conducted experiments on both the Quaternary Class Label and Binary Class Label dataset using a number of different models. The Quaternary Class Label, which divides movies into more usable quality classes, has the tradeoff of low prediction accuracies. However, it doesn't mean the model is necessarily less usable as the classification contains more information. In either case, the models show that the features such as award indices of director, actors and actresses as well as budget shows significant predictive power of movie quality, captured in ratings or classes in our measure.<br><br>
 
-                        Manipulating our data involved storing ratios in our dataset as opposed to just the raw-data i.e. <i>Yellow Cards/AveragePossession</i> instead of solely <i>Yellow Cards</i>. This proved to be a good move as our machine was more accurate with these metrics than without. <br><br>
-
-                        As only the team's total statistics prior to the match day could have been relevant to match outcome, we stored the team's prior-to-the-match-attributes and the outcome of the match (Home Win, Draw, Away Win) in a dataset, before updating the Team object.<br><br>
-
-                        We did the aforementioned data-collection for 8 Premier League seasons (~3,040 matches).<br><br>
+                    The models that yielded considerable accuracy improvements from the base accuracy (25% and 60% as we partitioned the quality classes) for each case are included. Various parameters of the models are tuned to produce their performance. The multilayer perceptron neural network model results in the best accuracy with a slight advantage over decision tree algorithms, especially for the Four Class Label Model. We attribute this difference to the fact that the size of our data is too small for the tree models to achieve good results for the relatively big output space (quaternary vs binary). Please see a more detailed discussion about different models in the report.<br><br>
+                    
+                    
+                    <center>
+                        <img src = "img/accuracies.png" style="width: 80%;height: auto">
+                    </center>
                     </p>
                 </div>
             </div>
         </div>
 
-    </section>
-    <section id="result">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Key Results</h2>
-                    <hr class="primary">
-                </div>
-            </div>
-        </div>
-        <div class="container">
-                <div class="col-lg-12">
-                    <p>
-                        Analysis on our data with 10-Fold Cross Validation revealed an average accuracy of 50% with the major ML algorithms such as Decision Trees, Random Forest, Bayes Nets, Multilayer Perceptrons, RBF Networks, and many more. Though the accuracy of these algorithms fluctuated within 5% either side of 50% (45-55%), some algorithms worked better than others. Unfortunately this improvement was not as great as we would have hoped. Using the Simple Logistic function built in to Weka, we were able to achieve 52.607% accuracy - though only slightly better than a 50% guess, it is a 19.277% improvement on the 1/3rd accuracy of random selection. This means that the ML algorithms learned from the features we passed, and that there is promise in the field of statistical analysis for match prediction. Moving forward we need to incorporate other statistics if we truly wish to model teams' playing styles and match-ups.<br><br>
-                        That said however, this exploration has revealed some vital elements including evidence to support the strength of the 'home field advantage', and that recent form can be just as important as quality in determining the outcomes of a match. Furthermore, it showed that teams that that like to keep possession have a lot better chances of winning away games than those that do not.
-                        <br><br>
-                    </p>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6 col-lg-offset-3">
-                        <img src = "img/Outcomes.png" style="width: 100%;height: 100%">
-                        <center>The break down of the results<br>{Away Win, Draw, Home Win}</center>
-                    </div>
-                </div>
-                <br><br>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <img src = "img/home_team_home_record.png" style="width: 100%;height: 130%">
-                        <center> Results based on home team home record</center>
-                    </div>
-                    <div class="col-lg-6">
-                        <img src = "img/away_team_avgpossession.png" style="width: 100%;height: 130%">
-                        <center> Results based on away team posession retention</center>
-                    </div>
-                </div>
     </section>
 
     <section id="future">
@@ -233,8 +173,10 @@
                         
                     <ul>
                       <li>Include more features that have an empirical impact on movie quality including special effect techniques, sound/videography effects, etc. Especially, as movies are usually made by many people with myriads of roles, finding a way to factor all of the human part of movie productions should be very effective.</li><br>
-                      <li>We have seen that award indices of directors and actors have proven to be very effective. We intend to refine our way of calculating the award index of actors and directors. Right now we do a simple count of a few keywords, which may be a good representation of the award concept but does differentiate or give weight to different awards and nomination versus winning status as well as the date of award.</li><br>
-                      <li>Considering that a large portion of movies have missing data on multiple attributes, we may want to expand our data sources so that we can collect more comprehensive data for each movie. By doing so, we can avoid losing around half of the movies simply because they have too many missing data. </li><br>
+                      <li>Refine the way of calculating the award index of actors and directors. We have seen that award indices of directors and actors have proven to be very effective. Right now we do a simple count of a few keywords, which may be a good representation of the award concept but does differentiate or give weight to different awards and nomination versus winning status as well as the date of award.</li><br>
+                      <li>Expand our dataset to include more movies of different periods, regions and kinds as well as fill in missing data for the existing dataset. This will certainly increase both the performance and usability of our model.
+                      </li><br>
+                      <li>Divide the label of models into more classes like 6 or even 10 classes. This will achieve a lower testing percentage as the Zero R base percentage will be really low, but it the classification result will be more useful as the user can infer more information from the result.</li><br>
                       <li>Experiment with more training methods. Neural network has proven to be the most effective. However, there are still many different settings of this model that should be test with in hope to achieve better testing results.</li>
                     </ul>  
 
@@ -242,19 +184,30 @@
     </section>
 
 
-
+    <section id="contact">
+        <div class="container">
     <aside>
-        <div class="container text-center">
-            <div class="call-to-action">
-                <form method = "get" action = "Final_Report.pdf">
-                    <button type="submit" class="btn btn-default btn-xl wow tada">Download Final Report</button>
-                </form>
+        <div class="row">
+            <div class="col-lg-2 text-center">
+            </div>
+            <div class="col-lg-4 text-center">
+                <div class="call-to-action">
+                    <form method = "get" action = "data.zip">
+                        <button type="submit" class="btn btn-default btn-xl wow tada">Download Dataset</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center">
+                <div class="call-to-action">
+                    <form method = "get" action = "Final_Report.pdf">
+                        <button type="submit" class="btn btn-default btn-xl wow tada">Download Final Report</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-2 text-center">
             </div>
         </div>
     </aside>
-
-    <section id="contact">
-        <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
                     <h2 class="section-heading">Contact us</h2>
